@@ -1,9 +1,12 @@
 import { useState, useRef } from 'react';
+import { useToasts } from 'react-toast-notifications';
+import Link from 'next/link';
 
 import { uploadImage } from '../firebase';
 
 const Form = () => {
   const imageRef = useRef(null);
+  const { addToast } = useToasts()
   const [image, setImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
 
@@ -21,13 +24,21 @@ const Form = () => {
         setImage(null);
         setImageUrl(null);
         imageRef.current.value = null;
+        addToast('La imagen ha sido enviada con éxito.', {
+          appearance: 'success'
+        });
       } else {
-        alert('No se ha podido subir tu imagen');
+        addToast('No se ha podido subir tu imagen.', {
+          appearance: 'error'
+        });
       }
     } catch {
-      alert('Ha ocurrido un error y no se ha podido subir tu imagen');
+      addToast(
+        'Ha ocurrido un error y no se ha podido subir tu imagen', {
+        appearance: 'error'
+      });
     }
-    
+
   };
 
   return (
@@ -52,12 +63,19 @@ const Form = () => {
 
         </label>
       </div>
-      <button type="submit" className="button is-link"
-        style={{
-          marginTop: 15
-        }}>
-        Enviar
-      </button>
+      <p className="help is-muted">Envía una imagen a la vez :)</p>
+      <nav className="buttons" style={{
+        marginTop: 25
+      }}>
+        <Link href="/">
+          <a role="button" className="button is-dark">
+            Volver al inicio
+          </a>
+        </Link>
+        <button type="submit" className="button is-black">
+          Enviar
+        </button>
+      </nav>
     </form>
   );
 };
