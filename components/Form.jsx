@@ -67,14 +67,17 @@ const Form = () => {
       <nav className="buttons" style={{
         marginTop: 25
       }}>
-        <Link href="/">
-          <a role="button" className="button is-dark">
-            Volver al inicio
-          </a>
-        </Link>
-        <button type="submit" className="button is-black">
-          Enviar
+        <nav className="buttons">
+          <Link href="/list">
+            <a role="button" className="button is-dark">Ver Imagenes</a>
+          </Link>
+          <Link href="/">
+            <a role="button" className="button is-light">Volver al inicio</a>
+          </Link>
+          <button type="submit" className="button is-black">
+            Enviar
         </button>
+        </nav>
       </nav>
     </form>
   );

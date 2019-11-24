@@ -37,9 +37,14 @@ class List extends Component {
     }
     return (
       <Layout>
-        <Link href="/">
-          <a role="button" className="button is-black">Volver al inicio</a>
-        </Link>
+        <nav className="buttons">
+          <Link href="/sender">
+            <a role="button" className="button is-dark">Enviar Imagen</a>
+          </Link>
+          <Link href="/">
+            <a role="button" className="button is-black">Volver al inicio</a>
+          </Link>
+        </nav>
         {imagesComponent}
       </Layout>
     );
