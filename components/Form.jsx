@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { useToasts } from 'react-toast-notifications';
 import Link from 'next/link';
 
-import { uploadImage } from '../firebase';
+import { uploadImage } from '../utils/firebase';
 
 const Form = () => {
   const imageRef = useRef(null);

@@ -1,5 +1,11 @@
 const functions = require('firebase-functions');
-const { ImageAnnotatorClient } = require('@google-cloud/vision');
+const admin = require('firebase-admin');
+const {
+  ImageAnnotatorClient
+} = require('@google-cloud/vision');
+
+admin.initializeApp(functions.config().firebase);
+const db = admin.firestore();
 
 exports.processImage = functions.storage.object().onFinalize(async (object) => {
   const client = new ImageAnnotatorClient();
@@ -7,10 +13,10 @@ exports.processImage = functions.storage.object().onFinalize(async (object) => {
 
   const [result] = await client.objectLocalization(gcsUri);
   const objects = result.localizedObjectAnnotations;
-  objects.forEach(object => {
-    console.log(`Name: ${object.name}`);
-    // console.log(`Confidence: ${object.score}`);
-    // const vertices = object.boundingPoly.normalizedVertices;
-    // vertices.forEach(v => console.log(`x: ${v.x}, y:${v.y}`));
+  const docRef = db.collection('images').doc();
+  const setAda = docRef.set({
+    gcsUri: gcsUri,
+    objects: objects.map(object => object.name),
+    timestamp: admin.firestore.FieldValue.serverTimestamp()
   });
 });
