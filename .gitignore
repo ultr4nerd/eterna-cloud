@@ -90,6 +90,15 @@ public/
 # DynamoDB Local files
 .dynamodb/
 
+# Firebase
+.idea
+**/node_modules/*
+**/.firebaserc
+
+# Firebase Patch
+.runtimeconfig.json
+.firebase/
+
 # Editor related
 .vscode/
 
