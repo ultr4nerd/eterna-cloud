@@ -1,0 +1,14 @@
+{
+  "env": {
+    "FIREBASE_API_KEY": "@firebase_api_key",
+    "FIREBASE_STORAGE_BUCKET": "@firebase_storage_bucket",
+    "FIREBASE_PROJECT_ID": "@firebase_project_id"
+  },
+  "build": {
+    "env": {
+      "FIREBASE_API_KEY": "@firebase_api_key",
+      "FIREBASE_STORAGE_BUCKET": "@firebase_storage_bucket",
+      "FIREBASE_PROJECT_ID": "@firebase_project_id"
+    }
+  }
+}

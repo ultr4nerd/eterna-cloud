@@ -8,10 +8,4 @@ module.exports = {
   devIndicators: {
     autoPrerender: false,
   },
-  // webpack: function (config) {
-  //   config.externals = [{
-  //     xmlhttprequest: '{XMLHttpRequest:XMLHttpRequest}'
-  //   }];
-  //   return config
-  // }
 }
